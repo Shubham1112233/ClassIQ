@@ -1,132 +1,160 @@
-# ClassIQ — Edtech website
+# ClassIQ — EdTech Website
 
-Please Check the Live URL - https://class-iq-ten.vercel.app/
+A responsive and performance-optimized EdTech website implemented from the [ClassIQ Figma design](https://www.figma.com/) using plain HTML, CSS, and JavaScript.
 
-Static website built in plain **HTML, CSS and JavaScript** from the Figma file
-*ClassIQ - Edtech web design* (Community file by Raunak Mishra, duplicated to
-`g5afjjWq5uROMng4RoHeKo`). No build step, no framework, no dependencies.
+## Live Demo
 
+* **Landing Page:** https://class-iq-ten.vercel.app/
+* **Course Dashboard:** https://class-iq-ten.vercel.app/dashboard.html
+* **Source Code:** https://github.com/Shubham1112233/ClassIQ
 
-## Structure
+## Overview
 
-```
+ClassIQ is a static EdTech website designed to provide a clean, modern, and responsive learning experience. The implementation focuses on accurately translating the Figma design into a functional website while maintaining a lightweight codebase, optimized assets, accessibility, and fast page loading.
+
+## Requirements
+
+* Accurately implement the design provided in the Figma file.
+* Ensure responsive layouts across desktop and mobile devices.
+* Optimize page-load performance, asset sizes, and code efficiency.
+* Maintain a clean, organized, and maintainable codebase.
+
+## Features
+
+* Responsive landing page based on the Figma design.
+* Course dashboard interface.
+* Sign-in and sign-up pages.
+* Mobile navigation with menu toggle functionality.
+* Subscription form validation.
+* Authentication form validation.
+* Accessible navigation and form controls.
+* Responsive layouts for desktop and mobile screen sizes.
+* Reduced-motion support for improved accessibility.
+
+## Technology Stack
+
+* **HTML5** — Semantic page structure.
+* **CSS3** — Responsive layouts, styling, and animations.
+* **JavaScript** — Navigation functionality and form validation.
+* **SVG** — Interface icons exported from Figma.
+* **WebP and PNG** — Optimized image assets.
+* **Vercel** — Deployment and hosting.
+
+The website does not use a JavaScript framework, build step, or runtime dependencies.
+
+## Project Structure
+
+```text
 ClassIQ/
-├── index.html          landing page
-├── dashboard.html      course dashboard
-├── signin.html         login
-├── signup.html         registration
-├── css/style.css       single shared stylesheet
-├── js/main.js          nav toggle, subscribe + auth validation
+├── index.html              # Landing page
+├── dashboard.html          # Course dashboard
+├── signin.html             # Login page
+├── signup.html             # Registration page
+├── css/
+│   └── style.css           # Shared stylesheet
+├── js/
+│   └── main.js             # Navigation and form validation
 └── assets/
-    ├── icons/          13 SVGs exported from Figma
-    └── images/         3 PNGs (@2x) exported from Figma
+    ├── icons/              # Figma-exported SVG icons
+    └── images/             # Optimized website images
 ```
 
-## Design tokens
+## Performance and Optimization
 
-Pulled from the Figma document, defined as CSS custom properties in `css/style.css`:
+Performance was a key consideration during implementation. The website was optimized to reduce asset sizes, minimize unnecessary browser work, improve loading behavior, and maintain a stable layout.
 
-| Token | Value | Used for |
-|-------|-------|----------|
-| `--green` | `#C2F578` | buttons, accents, social chips |
-| `--black` | `#000000` | hero heading, brand, auth text, dark buttons |
-| `--page-bg` | `#F5F5F5` | page background, inset panel |
-| `--card-bg` | `#ECEDEF` | cards, auth panel, banner, solution panel |
-| `--heading` | `#373636` | card titles, All-In-One Solution, View Courses |
-| `--heading-alt` | `#3E3E3E` | nav links, All Courses, Join Now |
-| `--body` | `#545454` | feature list |
-| `--text-strong` | `#282828` | "Professionals" |
-| `--text-mid` | `#565656` | Trusted by…, Certified Cources for |
-| `--text-soft` | `#595959` | Congratulations |
-| `--text-slate` | `#545567` | Your are enrolled! |
-| `--text-faint` | `#96989A` | hero paragraph |
-| `--muted` | `#ACAAB4` | secondary text |
+### Image Optimization
 
-Every text colour is the exact per-node fill from the Figma document, not an
-approximation — the green buttons alone use three different label colours.
+* Converted PNG images to WebP to reduce image file sizes.
+* Retained PNG fallback support through the `<picture>` element for compatible image delivery.
+* Reduced image assets from approximately **490 KB to 66 KB**.
+* Applied `loading="lazy"` and `decoding="async"` to below-the-fold images.
+* Used `fetchpriority="high"` for the hero image because it is the primary visual element.
+* Added explicit `width` and `height` attributes to images to reserve layout space and reduce cumulative layout shift.
 
-**Radii and shadows** are likewise read from the file: course cards 31px, auth
-card 22px, enrolled card 32px, dashboard cards 23px, solution panel 9px, buttons
-8px. The repeated card/icon shadow is `0 1px 4px #0C0C0D` at 5% plus the same at
-10%; the enrolled card uses a blue-tinted `#21C8F6` at 20% with a 20px backdrop blur.
+### Font Optimization
 
-**Fonts** (all Google Fonts, loaded from the CDN): Poppins, Inter, Nunito Sans.
-The hero headline is Poppins **Light 300** at 68px with `-2.04px` tracking;
-only "ClassIQ" is Poppins Bold 700. "Professionals" is Poppins ExtraBold 800.
+* Removed unused font weights.
+* Consolidated font loading across the website to improve browser caching.
+* Added `preconnect` to the font host.
+* Used `display=swap` to allow text to render using a fallback font while web fonts load.
 
-## Running it
+### SVG and Code Optimization
 
-Any static server works:
+* Removed unnecessary SVG filter definitions from exported icons.
+* Used shared CSS and JavaScript files across all pages.
+* Kept the implementation lightweight with no framework, build step, or runtime dependencies.
+* Retained static header and footer markup in each HTML page to avoid JavaScript-based content injection and preserve immediately available navigation markup.
 
-```bash
-python3 -m http.server 4173 -d /Users/shubhamekkaldevi/Practise/ClassIQ
-```
+### Accessibility and Motion
 
-Then open <http://localhost:4173>.
+* Added a skip-navigation link.
+* Implemented visible focus indicators.
+* Added accessible labels for form fields.
+* Used `aria-expanded` for mobile navigation state.
+* Added `aria-live` regions for form validation messages.
+* Implemented `prefers-reduced-motion` support to respect users' motion preferences.
 
-## Deliberate departures from the Figma file
+## Performance Metrics
 
-- **The footer was a flattened image** in Figma (`footer 1`, a 1432×360 raster).
-  It is rebuilt here as real markup so the links, the subscribe field and the
-  social icons actually work and are readable by screen readers.
-- **The login button** is labelled "Login". In the Figma frame the Login page's
-  submit button reads "SignUp", which is a slip in the source design.
-- **Dashboard course cards** are empty grey placeholders — that is exactly how
-  they appear in the Figma file (`Component 1` / `Component 2` have no content).
-- `Frame 2`, `user-check`, `share` and `laptop-code` are empty leftover frames in
-  the Figma file and are not used.
-- The layout is **responsive** (breakpoints at 1080px and 760px); the Figma file
-  only specifies the 1440px desktop view.
-- **Hover and focus states are my own.** The Figma file contains no prototype or
-  interaction data at all (`prototypeStartNodeID: null`, zero `reactions`), so
-  these states were undefined. I added conventional ones — a 2px lift on buttons
-  and cards, and visible focus rings — because a static page reads as broken
-  without them. Every colour used stays within the Figma palette; the single
-  green is `#C2F578`.
+The landing page was tested using **GTmetrix**, powered by Lighthouse.
 
-## Performance
+### GTmetrix Report
 
-No framework, no build step, no runtime dependencies. Bootstrap alone would have
-added ~28 KB gzipped — over three times the size of this entire codebase — to use
-a fraction of it, on a design that matches none of its components.
+| Metric                         |                            Result |
+| ------------------------------ | --------------------------------: |
+| GTmetrix Grade                 |                             **A** |
+| Performance Score              |                          **100%** |
+| Structure Score                |                          **100%** |
+| Largest Contentful Paint (LCP) |                        **365 ms** |
+| Total Blocking Time (TBT)      |                          **0 ms** |
+| Cumulative Layout Shift (CLS)  |                             **0** |
+| Total Page Size                |          **Approximately 116 KB** |
+| Compressed Page Size           | **Approximately 76 KB over gzip** |
 
-**Full landing page, modern browser: 116 KB (76 KB over gzip).**
+### Loading Timeline
 
-| | Before | After |
-|---|---|---|
-| Images | 490 KB (3 PNG) | **66 KB** (WebP, PNG fallback) |
-| Icons | 42 KB | **36 KB** |
-| HTML + CSS + JS | 30 KB raw / 8.3 KB gzip | unchanged |
-| **Total** | **549 KB** | **116 KB** |
+| Metric                         | Result |
+| ------------------------------ | -----: |
+| Time to First Byte (TTFB)      |  75 ms |
+| Redirect Time                  |   0 ms |
+| Connection Time                |  48 ms |
+| Backend Processing             |  27 ms |
+| First Contentful Paint (FCP)   | 366 ms |
+| Largest Contentful Paint (LCP) | 366 ms |
+| Time to Interactive (TTI)      | 366 ms |
+| Onload Time                    | 354 ms |
+| Fully Loaded Time              | 436 ms |
 
-What was done, and why:
+### Test Environment
 
-- **WebP with `<picture>` + PNG fallback** — 86% smaller, visually lossless
-  (RMSE 0.42 against the PNG render). The PNG stays as a `<source>` fallback
-  rather than being deleted, so older browsers still get an image.
-- **`loading="lazy"` + `decoding="async"`** on everything below the fold; the
-  hero image gets `fetchpriority="high"` instead, since it is the LCP element.
-- **Explicit `width`/`height` on every image** so the browser reserves space and
-  nothing shifts during load (no CLS).
-- **Font weights trimmed 12 → 9.** Inter 400/500 and Nunito Sans 700 were
-  requested but never referenced. One shared font URL across all four pages so it
-  is fetched once and cached for the rest of the site.
-- **`preconnect` to fonts.gstatic.com** so the second hop starts early, and
-  `display=swap` so text paints immediately in a fallback face.
-- **Dead SVG filter definitions stripped** — the Figma export wrapped each icon in
-  drop-shadow filters that fell outside the cropped viewBox. Removing them cut
-  those four files by 56%.
-- **`prefers-reduced-motion`** disables all transitions for users who ask for it.
+* **Test URL:** https://class-iq-ten.vercel.app/
+* **Test Server Location:** Seattle, USA
+* **Browser:** Google Chrome 142.0.0.0
+* **Lighthouse Version:** 12.6.1
+* **Report Date:** September 13, 2026
 
-### A note on repeated markup
+> Performance results may vary depending on the test location, network conditions, browser, and server response time.
 
-The header and footer are duplicated across the four HTML files. This is
-deliberate: the brief specifies plain HTML/CSS/JS with no build step, and the
-alternative — injecting shared chrome with JavaScript — would delay first paint
-and hide the navigation from crawlers, working against the performance
-requirement. Static duplication is the faster and more robust trade here.
+## Design and Implementation
 
-## Accessibility
+The website was developed based on the *ClassIQ — EdTech Web Design* Figma community file by Raunak Mishra.
 
-Skip link, visible focus rings, labelled form fields, `aria-live` validation
-messages, `aria-expanded` on the mobile menu, and `prefers-reduced-motion` support.
+The implementation prioritizes:
+
+* Accurate design reproduction.
+* Responsive behavior across screen sizes.
+* Reusable styling through a shared stylesheet.
+* Minimal JavaScript for interactive functionality.
+* Optimized assets for efficient loading.
+* Semantic HTML and accessible user interactions.
+
+## Deployment
+
+The website is deployed on Vercel and is available at:
+
+https://class-iq-ten.vercel.app/
+
+## License
+
+This project was created as an implementation of the provided ClassIQ Figma design.
