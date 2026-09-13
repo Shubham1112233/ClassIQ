@@ -1,5 +1,7 @@
 # ClassIQ — Edtech website
 
+Please Check the Live URL - https://class-iq-ten.vercel.app/
+
 Static website built in plain **HTML, CSS and JavaScript** from the Figma file
 *ClassIQ - Edtech web design* (Community file by Raunak Mishra, duplicated to
 `g5afjjWq5uROMng4RoHeKo`). No build step, no framework, no dependencies.
