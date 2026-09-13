@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ClassIQ — Login</title>
+<meta name="description" content="Log in to your ClassIQ account.">
+<link rel="icon" href="assets/icons/logo-mark.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@600;700&family=Nunito+Sans:wght@600&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="index.html">
+      <img src="assets/icons/logo-mark.svg" alt="" width="49" height="49">
+      <span class="brand-name">ClassIQ</span>
+    </a>
+
+    <button class="nav-toggle" aria-expanded="false" aria-controls="primary-nav" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+
+    <nav class="primary-nav" id="primary-nav">
+      <ul class="nav-links">
+        <li><a href="dashboard.html">Cources</a></li>
+      </ul>
+      <div class="nav-actions">
+        <a class="btn btn-dark" href="signin.html">Login</a>
+        <a class="btn btn-dark" href="signup.html">SignUp</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <section class="auth">
+    <div class="auth-card">
+      <h1 class="auth-title">Login</h1>
+      <form class="auth-form" novalidate>
+        <div class="field">
+          <label class="sr-only" for="email">Email</label>
+          <input id="email" type="email" name="email" placeholder="Enter Your Email" autocomplete="email" required>
+          <p class="field-msg" aria-live="polite"></p>
+        </div>
+        <div class="field">
+          <label class="sr-only" for="password">Password</label>
+          <input id="password" type="password" name="password" placeholder="Enter Your Password" autocomplete="current-password" required>
+          <p class="field-msg" aria-live="polite"></p>
+        </div>
+        <button class="btn btn-green" type="submit">Login</button>
+      </form>
+      <p class="auth-alt">Don&rsquo;t have an account?&nbsp;<a href="signup.html">SignUp</a></p>
+    </div>
+  </section>
+</main>
+
+<script src="js/main.js"></script>
+</body>
+</html>
